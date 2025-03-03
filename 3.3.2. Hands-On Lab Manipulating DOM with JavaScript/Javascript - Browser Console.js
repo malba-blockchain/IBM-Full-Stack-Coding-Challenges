@@ -29,7 +29,7 @@ let printMyInputES6Short = user_input => console.log(user_input)
 printMyInputES6Short(9)
 printMyInputES6Short("John")
 
-------------------------------------------------
+//--------------//--------------//--------------------
 
     console.log("5 + 3 = ", 5 + 3)
     console.log("7 - 3 = ", 7 - 3)
@@ -86,7 +86,7 @@ printMyInputES6Short("John")
     console.log("5 >= 5 ", 5 >= 5 )
     console.log("5 <= 5 ", 5 <= 5 )
 
-------------------------------------------------
+//--------------//--------------//--------------------
 
 var raining = false
 var cloudy = true
@@ -99,7 +99,7 @@ console.log("It is raining OR cloudy: ", raining || cloudy)
 console.log("It is not raining: ", !raining)
 console.log("It is not cloudy: ", !cloudy)
 
-------------------------------------------------
+//--------------//--------------//--------------------
 
 var chocolate = true
 var candy = false
@@ -111,7 +111,7 @@ console.log("There is candy AND chocolate: ", chocolate && candy, " -- Only cand
 console.log("There is chocolate OR candy: ", chocolate || candy, " -- Only chocolate is evaluated")
 
 
-------------------------------------------------
+//--------------//--------------//--------------------
 
     //Accept a input from the user. If it is a number, print the multiplication table for the number. Else print the input and the length of the input.
     let user_input = prompt('Enter a value');
@@ -138,7 +138,7 @@ console.log("There is chocolate OR candy: ", chocolate || candy, " -- Only choco
         console.log(user_input, " X 10 = ", user_input*10)
     }
 
---------------------------------------------------
+//--------------//--------------//----------------------
 
 let user_input = prompt('Enter a number between 1 to 7');
 
@@ -191,7 +191,7 @@ while(do_more) {
     }
 }
 
---------------------------------------------------
+//--------------//--------------//----------------------
 
 let myArray = ["Jack","Jill",4,5,true,"John"]
 
