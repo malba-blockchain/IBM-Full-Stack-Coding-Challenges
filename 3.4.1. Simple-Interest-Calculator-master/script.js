@@ -1,19 +1,29 @@
-function computeInterest()
+function compute()
 {
-    var pricipal = document.getElementById("principal").value;
-    pricipal = parseInt(pricipal, 10);
+    var principal = document.getElementById("principal").value;
 
     var rate = document.getElementById("rate").value;
-    rate = parseFloat(rate);
 
     var years  = document.getElementById("years").value;
-    years  = parseInt(years , 10);
 
-    var interest  = pricipal * years * rate / 100;
+    var interest  = parseInt(principal) * parseInt(years) * parseFloat(rate) / 100;
 
-    var amount = pricipal + parseInt(interest);
+    var amount = parseInt(principal) + interest;
 
     var result = document.getElementById("result");
+
+    var year = new Date().getFullYear() + parseInt(years);
+
+    if(principal <= 0) {
+        alert("Enter a positive number");
+        document.getElementById("principal").focus();
+    }
+    else {
+        result.innerHTML = "If you deposit $" + "<mark>" + principal + "</mark>" 
+        + ",\<br\> at an interest rate of " + "<mark>" + rate + "%" + "</mark>" 
+        + "\<br\> You will receive an amount of $" + "<mark>" + amount + "</mark>" 
+        + ",\<br\> in the year " + "<mark>" + year + "</mark>" + "\<br\>";
+    }
 }
 
 function updateRate(){
