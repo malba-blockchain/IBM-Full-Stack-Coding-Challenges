@@ -34,11 +34,11 @@ function readFile2(filename2) {
 }
 
 // Log message before reading the first file
-console.log('Before reading the file-1');
+console.log('\nBefore reading the file-1');
 readFile1(filename1);
 
 // Log message before reading the second file
-console.log('Before reading the file-2');
+console.log('\nBefore reading the file-2');
 readFile2(filename2);
 
 // Log message after initiating the reading of both files

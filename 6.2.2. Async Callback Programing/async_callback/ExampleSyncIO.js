@@ -1,6 +1,6 @@
 // Requiring fs module - fs is used for File I/O
 let fs = require('fs');
- 
+
 // Define the filenames to be read
 let filename1 = "courseDetails.json";
 let filename2 = "sampleData.json";
@@ -20,13 +20,13 @@ function readFile2(filename2) {
     console.log("\n\nThe content of the file is \n\n" + data);
     console.log("Completed reading file2");
 }
- 
+
 // Log message before reading the first file
-console.log('Before reading file-1');
+console.log('\nBefore reading file-1');
 readFile1(filename1);
  
 // Log message before reading the second file
-console.log('Before reading file-2');
+console.log('\nBefore reading file-2');
 readFile2(filename2);
  
 // Log message after reading both files
