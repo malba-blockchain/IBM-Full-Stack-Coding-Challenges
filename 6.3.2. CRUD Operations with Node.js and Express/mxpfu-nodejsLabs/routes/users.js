@@ -1,5 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
+
+// Define an absolute path to save the txt file
+const logPath = path.join(__dirname, 'debug.txt');
 
 let users = [
     {
@@ -41,6 +46,52 @@ router.get("/:email",(req,res)=>{
   res.send(filtered_users);
 });
 
+// GET by particular Last Name request: Retrieve all the users that have the particular Last Name
+router.get("/lastName/:lastName",(req,res)=>{
+    // Copy the code here
+    const lastName = req.params.lastName;
+  
+    let filtered_users = users.filter((user) => user.lastName === lastName)
+  
+    // Send the filtered_users array as the response to the client
+    res.send(filtered_users);
+});
+
+// GET users in order of date of birth request: Retrieve all the users ordered by their date of birth
+router.get("/sort/", (req, res) => {
+    try {
+        console.log('Debug file path:', logPath);
+        
+        // Ensure we can write to the file by appending a test message
+        fs.appendFileSync(logPath, `\n--- New Request to /sort at ${new Date().toISOString()} ---\n`);
+        console.log('Successfully wrote to debug file');
+        
+        fs.appendFileSync(logPath, `Users array: ${JSON.stringify(users, null, 2)}\n\n`);
+
+        // Create a copy of the users array
+        let filtered_users = [...users];
+        
+        // Sort users by date of birth in ascending order
+        filtered_users.sort((a, b) => {
+            // Convert string dates to Date objects for proper comparison
+            const dateA = new Date(a.DOB.split('-').reverse().join('-'));
+            const dateB = new Date(b.DOB.split('-').reverse().join('-'));
+            
+            // Compare the dates
+            return dateA - dateB;
+        });
+
+        // Log the sorted results
+        fs.appendFileSync(logPath, `Sorted results: ${JSON.stringify(filtered_users, null, 2)}\n\n`);
+        console.log('Sorted results written to debug file');
+    
+        // Send the sorted array as the response to the client
+        res.send(filtered_users);
+    } catch (error) {
+        console.error('Error in /sort endpoint:', error);
+        res.status(500).send({ error: 'Internal server error', details: error.message });
+    }
+});
 
 // POST request: Create a new user
 router.post("/",(req,res)=>{
