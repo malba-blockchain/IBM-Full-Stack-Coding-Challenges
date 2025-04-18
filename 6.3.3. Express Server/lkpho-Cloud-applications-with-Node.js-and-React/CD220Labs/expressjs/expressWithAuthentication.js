@@ -1,4 +1,4 @@
- // Importing required modules: Express.js, JSON Web Token (JWT), and Express session
+// Importing required modules: Express.js, JSON Web Token (JWT), and Express session
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
@@ -46,8 +46,8 @@ app.use("/auth", function auth(req, res, next) {
 
 // Route to handle user login
 app.post("/login", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  const username = req.query.username || req.body.username;
+  const password = req.query.password || req.body.password;
 
   if (!username || !password) {
     return res.status(404).json({ message: "Error logging in" });
@@ -69,10 +69,12 @@ app.post("/login", (req, res) => {
 
 // Route to handle user registration
 app.post("/register", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  // Get data from either query params or request body
+  const username = req.query.username || req.body.username;
+  const password = req.query.password || req.body.password;
 
   if (username && password) {
+
     if (!doesExist(username)) {
       users.push({ "username": username, "password": password });
       return res.status(200).json({ message: "User successfully registered. Now you can login" });

@@ -15,6 +15,16 @@ app.get("/", (req, res) => {
 // Define a route to send the month of the year based on the number
 app.get("/fetchMonth/:num", (req, res) => {
 
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    let num = parseInt(req.params.num);
+
+    if(num < 1 || num > 12) {
+        res.send("Not a valid month number");
+    } else {
+        res.send(months[num-1]);
+    }
+    
 });
 
 // Define a route to send login details as a JSON string
