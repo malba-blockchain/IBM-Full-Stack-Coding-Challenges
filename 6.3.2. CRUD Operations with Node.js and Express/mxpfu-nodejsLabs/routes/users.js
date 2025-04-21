@@ -105,11 +105,6 @@ router.put("/:email", (req, res) => {
         if (DOB) {
             filtered_user.DOB = DOB;
         }
-        
-        /*
-        Include similar code here for updating other attributes as needed
-        */
-        
         // Replace old user entry with updated user
         users = users.filter((user) => user.email != email);
         users.push(filtered_user);
